@@ -1799,12 +1799,13 @@ forever(function () {
             ........ffcccfffccccccff
             ..........fff...fffffff.
             `, SpriteKind.Boss)
-        bossber = statusbars.create(20, 3, StatusBarKind.EnemyHealth)
+        bossber = statusbars.create(30, 4, StatusBarKind.EnemyHealth)
         bossber.max = 100
-        bossber.setColor(5, 4, 1)
+        bossber.value = 100
+        bossber.setColor(5, 11, 3)
         bossber.setBarBorder(1, 15)
         bossber.positionDirection(CollisionDirection.Top)
-        bossber.setBarSize(20, 10)
+        bossber.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
         myEnemy.setPosition(120, 65)
         boss += 1
     }
