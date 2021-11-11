@@ -6,6 +6,15 @@ namespace SpriteKind {
     export const enemy5 = SpriteKind.create()
     export const enemybullet = SpriteKind.create()
 }
+/**
+ * ・背景がスクロールしているようにみせた
+ * 
+ * ・ボスのゲージを上に表示したこと
+ * 
+ * ・ステージ移動する
+ * 
+ * ・BGMは「 Battle! Team Galactic」から
+ */
 // 自身にダメージ！
 sprites.onOverlap(SpriteKind.Boss, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
