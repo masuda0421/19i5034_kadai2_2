@@ -1496,14 +1496,95 @@ function haikei () {
         }
     }
 }
+function BGM2 () {
+    music.playTone(294, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(349, music.beat(BeatFraction.Quarter))
+    music.playTone(294, music.beat(BeatFraction.Quarter))
+    music.playTone(294, music.beat(BeatFraction.Eighth))
+    music.playTone(392, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(349, music.beat(BeatFraction.Quarter))
+    music.playTone(330, music.beat(BeatFraction.Triplet))
+    music.playTone(294, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(349, music.beat(BeatFraction.Quarter))
+    music.playTone(294, music.beat(BeatFraction.Quarter))
+    music.playTone(294, music.beat(BeatFraction.Eighth))
+    music.playTone(392, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(349, music.beat(BeatFraction.Quarter))
+    music.playTone(330, music.beat(BeatFraction.Triplet))
+    music.playTone(622, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(740, music.beat(BeatFraction.Quarter))
+    music.playTone(622, music.beat(BeatFraction.Quarter))
+    music.playTone(622, music.beat(BeatFraction.Eighth))
+    music.playTone(831, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(740, music.beat(BeatFraction.Quarter))
+    music.playTone(659, music.beat(BeatFraction.Triplet))
+    music.playTone(622, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(740, music.beat(BeatFraction.Quarter))
+    music.playTone(622, music.beat(BeatFraction.Quarter))
+    music.playTone(622, music.beat(BeatFraction.Eighth))
+    music.playTone(831, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(740, music.beat(BeatFraction.Quarter))
+    music.playTone(659, music.beat(BeatFraction.Triplet))
+}
+function BGM1 () {
+    music.playTone(392, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(494, music.beat(BeatFraction.Quarter))
+    music.playTone(392, music.beat(BeatFraction.Quarter))
+    music.playTone(392, music.beat(BeatFraction.Eighth))
+    music.playTone(554, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(494, music.beat(BeatFraction.Quarter))
+    music.playTone(440, music.beat(BeatFraction.Triplet))
+    music.playTone(392, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(494, music.beat(BeatFraction.Quarter))
+    music.playTone(392, music.beat(BeatFraction.Quarter))
+    music.playTone(392, music.beat(BeatFraction.Eighth))
+    music.playTone(554, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(494, music.beat(BeatFraction.Quarter))
+    music.playTone(440, music.beat(BeatFraction.Triplet))
+    music.playTone(831, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(988, music.beat(BeatFraction.Quarter))
+    music.playTone(831, music.beat(BeatFraction.Quarter))
+    music.playTone(831, music.beat(BeatFraction.Eighth))
+    // 高い高いド
+    music.playTone(1048, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(988, music.beat(BeatFraction.Quarter))
+    music.playTone(880, music.beat(BeatFraction.Triplet))
+    music.playTone(831, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(988, music.beat(BeatFraction.Quarter))
+    music.playTone(831, music.beat(BeatFraction.Quarter))
+    music.playTone(831, music.beat(BeatFraction.Eighth))
+    // 高い高いド
+    music.playTone(1048, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.playTone(988, music.beat(BeatFraction.Quarter))
+    music.playTone(880, music.beat(BeatFraction.Triplet))
+}
 // 自身にダメージ！
 sprites.onOverlap(SpriteKind.Enemy1, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     music.smallCrash.play()
     pause(2000)
 })
-function BGM () {
-	
+function BGM3 () {
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.rest(music.beat(BeatFraction.Quarter))
 }
 statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
     info.changeScoreBy(100)
@@ -1859,6 +1940,13 @@ game.onUpdateInterval(700, function () {
             `, myEnemy, -90, 0)
         projectile4.setKind(SpriteKind.enemybullet)
     }
+})
+forever(function () {
+    music.setTempo(50)
+    BGM1()
+})
+forever(function () {
+    BGM2()
 })
 // 背景動く
 forever(function () {
