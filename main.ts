@@ -1361,7 +1361,6 @@ function haikei () {
             `)
         pause(200)
     } else {
-        boss = 1
         scene.setBackgroundImage(img`
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -1514,6 +1513,43 @@ sprites.onOverlap(SpriteKind.Boss, SpriteKind.bullet, function (sprite, otherSpr
     bossber.value += -5
     music.pewPew.play()
 })
+function bosswow () {
+    myEnemy = sprites.create(img`
+        ........................
+        ........................
+        .........f..............
+        .......fddfff...........
+        ......fddbdbbf..........
+        .....fdcccccbbf.........
+        .....cfccfbbbbf.........
+        .....cfccfbbbbf.........
+        .....ccccccccccf........
+        ...fdc1331cccbbcff......
+        ..fbbb222ffffffcccf.....
+        .fcbbc222fbbbbbfbbbf....
+        .cccffc22fcccccbbbbbf...
+        .ffffcbbcfffffcccccbf...
+        ....fbccbbbbbbcbbbfff...
+        ....fbccbdddddbbbbff....
+        ...fddbbbdbddddddddf....
+        ..fcdbbbbbbbbbbbbddcff..
+        ..fcbbbbbbbbbbbbbbbccff.
+        ..fccccccbbbbbbcccccccff
+        ...fffffcccbcccccccccccf
+        .......fccccccccccccccf.
+        ........ffcccfffccccccff
+        ..........fff...fffffff.
+        `, SpriteKind.Boss)
+    bossber = statusbars.create(30, 4, StatusBarKind.EnemyHealth)
+    bossber.max = 100
+    bossber.value = 100
+    bossber.setColor(5, 11, 3)
+    bossber.setBarBorder(1, 15)
+    bossber.positionDirection(CollisionDirection.Top)
+    bossber.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+    myEnemy.setPosition(120, 65)
+    boss += 1
+}
 // 普通の敵10点
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.bullet, function (sprite, otherSprite) {
     sprite.destroy()
@@ -1611,15 +1647,14 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile2.setKind(SpriteKind.bullet)
     pause(250)
 })
-let myEnemy: Sprite = null
 let projectile: Sprite = null
 let enemy2: Sprite = null
 let enemy1: Sprite = null
 let projectile2: Sprite = null
 let projectile3: Sprite = null
 let shootPower = 0
+let myEnemy: Sprite = null
 let bossber: StatusBarSprite = null
-let boss = 0
 let changeAnimFl = 0
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
@@ -1659,7 +1694,7 @@ statusbar.max = 50
 statusbar.setColor(1, 4)
 statusbar.setBarBorder(1, 8)
 changeAnimFl = 0
-boss = 0
+let boss = 0
 let star = [img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -1772,42 +1807,8 @@ forever(function () {
         projectile.y = randint(0, 120)
         projectile.z = -10
         projectile.setFlag(SpriteFlag.Ghost, true)
-    } else if (info.score() >= 300 && boss == 1) {
-        myEnemy = sprites.create(img`
-            ........................
-            ........................
-            .........f..............
-            .......fddfff...........
-            ......fddbdbbf..........
-            .....fdcccccbbf.........
-            .....cfccfbbbbf.........
-            .....cfccfbbbbf.........
-            .....ccccccccccf........
-            ...fdc1331cccbbcff......
-            ..fbbb222ffffffcccf.....
-            .fcbbc222fbbbbbfbbbf....
-            .cccffc22fcccccbbbbbf...
-            .ffffcbbcfffffcccccbf...
-            ....fbccbbbbbbcbbbfff...
-            ....fbccbdddddbbbbff....
-            ...fddbbbdbddddddddf....
-            ..fcdbbbbbbbbbbbbddcff..
-            ..fcbbbbbbbbbbbbbbbccff.
-            ..fccccccbbbbbbcccccccff
-            ...fffffcccbcccccccccccf
-            .......fccccccccccccccf.
-            ........ffcccfffccccccff
-            ..........fff...fffffff.
-            `, SpriteKind.Boss)
-        bossber = statusbars.create(30, 4, StatusBarKind.EnemyHealth)
-        bossber.max = 100
-        bossber.value = 100
-        bossber.setColor(5, 11, 3)
-        bossber.setBarBorder(1, 15)
-        bossber.positionDirection(CollisionDirection.Top)
-        bossber.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-        myEnemy.setPosition(120, 65)
-        boss += 1
+    } else if (info.score() >= 300 && boss == 0) {
+        bosswow()
     }
     console.log(shootPower)
     statusbar.value = shootPower
