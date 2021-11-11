@@ -17,9 +17,7 @@ namespace SpriteKind {
  */
 // 自身にダメージ！
 sprites.onOverlap(SpriteKind.Boss, SpriteKind.Player, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
-    music.smallCrash.play()
-    pause(2000)
+	
 })
 function haikei () {
     if (info.score() < 300) {
@@ -1600,6 +1598,7 @@ function BGM5 () {
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
@@ -1616,6 +1615,7 @@ function BGM5 () {
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
@@ -1632,6 +1632,7 @@ function BGM5 () {
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
@@ -1648,12 +1649,11 @@ function BGM5 () {
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Eighth))
 }
 // 自身にダメージ！
 sprites.onOverlap(SpriteKind.Enemy1, SpriteKind.Player, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
-    music.smallCrash.play()
-    pause(2000)
+	
 })
 function BGM3 () {
     music.rest(music.beat(BeatFraction.Quarter))
@@ -1714,6 +1714,7 @@ function BGM4 () {
     music.playTone(196, music.beat(BeatFraction.Eighth))
     music.playTone(220, music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
@@ -1730,6 +1731,7 @@ function BGM4 () {
     music.playTone(196, music.beat(BeatFraction.Eighth))
     music.playTone(220, music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
@@ -1746,6 +1748,7 @@ function BGM4 () {
     music.playTone(196, music.beat(BeatFraction.Eighth))
     music.playTone(220, music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
     music.playTone(175, music.beat(BeatFraction.Eighth))
     music.playTone(196, music.beat(BeatFraction.Eighth))
@@ -1762,6 +1765,7 @@ function BGM4 () {
     music.playTone(247, music.beat(BeatFraction.Eighth))
     music.playTone(233, music.beat(BeatFraction.Eighth))
     music.playTone(220, music.beat(BeatFraction.Eighth))
+    music.rest(music.beat(BeatFraction.Eighth))
 }
 statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
     info.changeScoreBy(100)
@@ -1784,9 +1788,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.bulletB, function (sprite, otherS
 })
 // ダメージ　
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
-    music.smallCrash.play()
-    pause(2000)
+	
 })
 // 黄色の敵を撃ったとき20点！！！！
 sprites.onOverlap(SpriteKind.Boss, SpriteKind.bullet, function (sprite, otherSprite) {
@@ -1911,9 +1913,7 @@ sprites.onOverlap(SpriteKind.Enemy1, SpriteKind.bulletB, function (sprite, other
 })
 // 自身にダメージ！
 sprites.onOverlap(SpriteKind.enemybullet, SpriteKind.Player, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
-    music.smallCrash.play()
-    pause(2000)
+	
 })
 // a small bullet
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -2119,7 +2119,8 @@ game.onUpdateInterval(700, function () {
     }
 })
 forever(function () {
-    music.setTempo(50)
+    music.setVolume(70)
+    music.setTempo(40)
     BGM1()
 })
 forever(function () {
