@@ -17,7 +17,9 @@ namespace SpriteKind {
  */
 // 自身にダメージ！
 sprites.onOverlap(SpriteKind.Boss, SpriteKind.Player, function (sprite, otherSprite) {
-	
+    info.changeLifeBy(-1)
+    music.smallCrash.play()
+    pause(2000)
 })
 function haikei () {
     if (info.score() < 300) {
@@ -1653,7 +1655,9 @@ function BGM5 () {
 }
 // 自身にダメージ！
 sprites.onOverlap(SpriteKind.Enemy1, SpriteKind.Player, function (sprite, otherSprite) {
-	
+    info.changeLifeBy(-1)
+    music.smallCrash.play()
+    pause(2000)
 })
 function BGM3 () {
     music.rest(music.beat(BeatFraction.Quarter))
@@ -1788,7 +1792,9 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.bulletB, function (sprite, otherS
 })
 // ダメージ　
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-	
+    info.changeLifeBy(-1)
+    music.smallCrash.play()
+    pause(2000)
 })
 // 黄色の敵を撃ったとき20点！！！！
 sprites.onOverlap(SpriteKind.Boss, SpriteKind.bullet, function (sprite, otherSprite) {
@@ -1913,7 +1919,9 @@ sprites.onOverlap(SpriteKind.Enemy1, SpriteKind.bulletB, function (sprite, other
 })
 // 自身にダメージ！
 sprites.onOverlap(SpriteKind.enemybullet, SpriteKind.Player, function (sprite, otherSprite) {
-	
+    info.changeLifeBy(-1)
+    music.smallCrash.play()
+    pause(2000)
 })
 // a small bullet
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
